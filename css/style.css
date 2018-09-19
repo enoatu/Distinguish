@@ -1,0 +1,19 @@
+#distinguish_display_box {
+    position: fixed;
+    left : 0px;
+    bottom : 40px;
+    width: 30px;
+    height: 100px;
+    background-color: #F00;
+    z-index : 3999;
+    -ms-writing-mode: tb-rl;
+    writing-mode: vertical-rl;
+    cursor: pointer;
+
+}
+#distinguish_display_box > p {
+    text-align: center;
+    font-size: 30px;
+    margin: -5px;
+    color: #fff;
+}

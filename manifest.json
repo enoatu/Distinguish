@@ -1,0 +1,20 @@
+{
+    "name": "Distinguish",
+    "version": "0.0.1",
+    "manifest_version": 2,
+    "description": "開発環境と本番環境を見分けやすくする拡張。",
+    "browser_action": {
+        "default_icon": "/img/icon.png",
+        "default_title": "変な写真"
+    },
+    "content_scripts": [
+        {
+            "matches": [ "http://*/*", "https://*/*" ],
+            "js": ["js/jquery-3.3.1.min.js","js/jquery-ui.min.js","js/main.js"],
+            "css": ["css/style.css"]
+        }
+    ],
+    "permissions": [
+        "storage"
+    ]
+}
