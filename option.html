@@ -1,0 +1,24 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>オプションページ</title>
+</head>
+<body>
+<section>
+    <p>URL</p>
+    <input id="url_txt" type="text" maxLength="20">
+    <form id="kind_radio">
+        <p>種類</p>
+        <p>開発</p><p>ステージ</p><p>本番</p><p>その他</p>
+        <input type="radio" name="kind" value="Dev" checked>
+        <input type="radio" name="kind" value="Stage">
+        <input type="radio" name="kind" value="Prd">
+        <input type="radio" name="kind" value="Other">
+    </form>
+    <button id="save">保存</button>
+    <table id="distinguish_list">
+    </table>
+</section>
+</body>
+<script src="js/option.js"></script>
+</html>
