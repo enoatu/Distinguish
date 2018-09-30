@@ -1,27 +1,25 @@
-//console.log("");
-//var url = location.href;
-//Object.keys(obj).forEach(function (key) {
-//    if (url == obj[key]) {
-//    var checked = "";
-//    var kind = document.getElementsByName("kind");
-//    for (let i = 0; i < kind.length; i++) {
-//        if(kind[i].checked){
-//            checked = kind[i].value;
-//            break;
-//        }
-//    }
-//    console.log(key + " : " + obj[key]);
-//    console.log("checked " + checked);
-//        return;
-//    }
-//});
-//
-$(function() {
-    $('body').append('<div id="distinguish_display_box"><p>本 番</p></div>');
+chrome.runtime.sendMessage({method: 'getItem', key: 'distinguish_data'}, function (response) {
+    if (!response) return;
+    init(response.data);
+});
+
+function init (data) {
+    if (!data) var data = [];
+    var current_url = location.href;
+    for (var i = 0; i < data.length; i++) {
+        if(!current_url.indexOf(data[i].url)){
+            displayBox(data[i]);
+            break;
+        }
+    }
+}
+
+function displayBox(data) {
+    $('body').append('<div id="distinguish_display_box"><p>' + data.kind + '</p></div>');
     $("#distinguish_display_box").draggable({
         containment: 'body',
         axis: 'y'
     });
-});
+}
 
 

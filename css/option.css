@@ -1,0 +1,21 @@
+table {
+    border-collapse: collapse;  /* セルの線を重ねる */
+}
+th,td {
+    padding: 5px 10px;          /* 余白指定 */
+}
+th {
+    background-color: #2196F3;  /* 背景色指定 */
+    color:  #fff;               /* 文字色指定 */
+    font-weight:  normal;       /* 文字の太さ指定 */
+    position:  relative;        /* 位置指定 */
+    z-index: 10;                /* 重なり調整 */
+}
+td {
+    background-color:  #c0c9ff; /* 背景色指定 */
+    padding-left: 25px;         /* 余白指定 */
+    font-size: 15px;
+}
+tr {
+    border-bottom:  solid #fff; /* 線指定 */
+}

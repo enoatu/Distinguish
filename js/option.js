@@ -4,17 +4,15 @@ var obj = {
     list :      document.querySelector("#distinguish_list"),
 };
 document.querySelector('#save').addEventListener('click', function(){ check() }, false);
-init();
-
-function init() {
-    var data = JSON.parse(localStorage.getItem('distinguish_session'));
+(function () {
+    var data = JSON.parse(localStorage.getItem('distinguish_data'));
     console.log(data);
     if (!data) var data= [];
     for (var i = 0; i < data.length; i++) {
         obj.list.innerHTML +=
-            '<th><tr>' + data[i].url + '</tr><tr>' + data[i].kind + '</tr></th>';
+            '<tr><th>' + data[i].url + '</th><td>' + data[i].kind + '</td></tr>';
     }
-}
+})();
 function check() {
     var checkedValue = null;
     for (var i = 0; i < obj.kindRadio.length; i++) {
@@ -33,18 +31,15 @@ function check() {
             kind: checkedValue
         }
     );
-    console.log(obj.urlTxt.value);
-    console.log(checkedValue);
 }
 function SaveDataToLocalStorage(data) {
     if (!data) return;
     //localStorage['title_txt'] = ('title_txt').value;
-    var tmpArr = JSON.parse(localStorage.getItem('distinguish_session'));
+    var tmpArr = JSON.parse(localStorage.getItem('distinguish_data'));
     if (!tmpArr) var tmpArr = [];
     tmpArr.push(data);
-    alert(tmpArr);
-    localStorage.setItem('distinguish_session', JSON.stringify(tmpArr));
+    localStorage.setItem('distinguish_data', JSON.stringify(tmpArr));
     obj.list.innerHTML +=
-        '<th><tr>' + data.url + '</tr><tr>' + data.kind + '</tr></th>';
+        '<tr><th>' + data.url + '</th><td>' + data.kind + '</td></tr>';
 }
 

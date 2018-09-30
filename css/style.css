@@ -5,7 +5,7 @@
     width: 30px;
     height: 100px;
     background-color: #F00;
-    z-index : 3999;
+    z-index : 9999999999999999999999999999999999999;
     -ms-writing-mode: tb-rl;
     writing-mode: vertical-rl;
     cursor: pointer;

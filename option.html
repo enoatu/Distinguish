@@ -2,6 +2,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>オプションページ</title>
+<link href="css/option.css" rel="stylesheet">
 </head>
 <body>
 <section>
@@ -10,13 +11,21 @@
     <form id="kind_radio">
         <p>種類</p>
         <p>開発</p><p>ステージ</p><p>本番</p><p>その他</p>
-        <input type="radio" name="kind" value="Dev" checked>
-        <input type="radio" name="kind" value="Stage">
-        <input type="radio" name="kind" value="Prd">
-        <input type="radio" name="kind" value="Other">
+        <input type="radio" name="kind" value="開発" checked>
+        <input type="radio" name="kind" value="ステージ">
+        <input type="radio" name="kind" value="本番">
+        <input type="radio" name="kind" value="ほか">
     </form>
     <button id="save">保存</button>
-    <table id="distinguish_list">
+    <table>
+        <!--<thead>
+            <tr>
+                <td>URL</td>
+                <td>種類</td>
+            </tr>
+        </thead>-->
+        <tbody id="distinguish_list">
+        </tbody>
     </table>
 </section>
 </body>
