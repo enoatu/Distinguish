@@ -14,12 +14,11 @@
     </datalist>
     <form id="kind_radio">
         <p>種類</p>
-        <p>開発</p><p>ステージ</p><p>本番</p><p>その他</p>
-        <input type="radio" name="kind" value="開発">
-        <input type="radio" name="kind" value="検証">
-        <input type="radio" name="kind" value="ステージング">
-        <input type="radio" name="kind" value="本番">
-        <input type="radio" name="kind" value="ほか">
+        <input type="radio" name="kind" value="開発" id="dev"><label for="dev"><span id="dev_l">開発</span></label>
+        <input type="radio" name="kind" value="検証" id="test"><label for="test"><span id="test_l">検証</span></label>
+        <input type="radio" name="kind" value="ステージング" id="stage"><label for="stage"><span id="stage_l">ステージング</span></label>
+        <input type="radio" name="kind" value="本番" id="prd"><label for="prd"><span id="prd_l">本番</span></label>
+        <input type="radio" name="kind" value="その他" id="etc"><label form="etc"><span id="etc_l">その他</span></label>
     </form>
     <button id="save_btn">保存</button>
     <form name="list">

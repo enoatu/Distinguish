@@ -23,3 +23,27 @@ tr {
 #delete_btn {
     visibility: hidden;
 }
+
+#kind_radio label {
+  position: relative; /*絶対配置の基準位置 */
+}
+
+#dev_l {
+    background-color: #00f4ff78;
+}
+
+#test_l {
+    background-color: #ffff00d4;
+}
+#stage_l {
+    background-color: #ff9a13d4;
+}
+
+#prd_l {
+    background-color: #ff4110d4;
+}
+
+
+#etc_l {
+    background-color: #ffb1f7d4;
+}

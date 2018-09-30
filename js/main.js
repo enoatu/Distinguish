@@ -15,9 +15,9 @@ function init (data) {
 }
 
 function displayBox(data) {
-    var bg = (data.bgColor ==='undefined') ? null : "style = 'background-color:'" + data.bgColor;
+    var bg = (typeof data.bgColor ==='undefined') ? '#F00' : data.bgColor;
     $('body').append(
-        "<div id='distinguish_display_box'" + bg + "><p>" + data.kind + "</p></div>"
+        "<div id='distinguish_display_box' style = 'background-color: " + bg + "'><p>" + data.kind + "</p></div>"
     );
     $("#distinguish_display_box").draggable({
         containment: 'body',

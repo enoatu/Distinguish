@@ -36,7 +36,6 @@ function listMonitor(obj) {
     var checkbox = document.list.elements['check[]'];
     function show() {
         var len = checkbox.length;
-        console.log("sdf");
         if (!len) {
            flag = checkbox.checked ? true : false;
         }
@@ -81,22 +80,36 @@ function check(obj, saveKey) {
     }
     var data = {
         url: obj.urlTxt.value,
-        kind: checkedValue
+        kind: checkedValue,
+        bgColor: pickColor(checkedValue)
     };
     save(obj, data, saveKey);
+}
+
+function pickColor(val) {
+    switch(val) {
+        case '開発': return '#00f4ff78';
+            break;
+        case '検証': return '#ffff00d4';
+            break;
+        case 'ステージング': return '#ff9a13d4';
+            break;
+        case '本番': return '#ff4110d4';
+            break;
+        case 'その他': return '#ffb1f7d4';
+            break;
+        default: return '#ffb1f7d4';
+    }
 }
 
 function save(obj, data, saveKey) {
     var data = saveDataToLocalStorage(data, saveKey);
     if (typeof data.length === 'undefined') {
-        console.log("solo");
         obj.list.innerHTML +=
             '<tr><td><input type="checkBox" name="check[]" class="checkbox"></td><th>'
             + data.url + '</th><td>' + data.kind + '</td></tr>';
 
     } else {
-        console.log("solo2");
-        console.log(data.length);
         for (var i = 0, len = data.length; i < len; i++) {
             obj.list.innerHTML +=
                 '<tr><td><input type="checkBox" name="check[]" class="checkbox"></td><th>'
@@ -165,9 +178,7 @@ function importFile(obj, saveKey) {
 }
 
 function checkJson(json) {
-    console.log(json);
-    if (json.length ==='undefined') return false;
-    console.log(json.length);
+    if (typeof json.length ==='undefined') return false;
     for (var i = 0, len = json.length; i < len; i++) {
         if (!json[i].hasOwnProperty('url'))  return false;
         if (!json[i].hasOwnProperty('kind')) return false;

@@ -2,9 +2,9 @@
     position: fixed;
     left : 0px;
     bottom : 40px;
-    width: 30px;
-    height: 100px;
-    background-color: #F00;
+    width: 30px !important;
+    min-height: 100px !important;
+    max-height: 300px !important;
     z-index : 9999999999999999999999999999999999999;
     -ms-writing-mode: tb-rl;
     writing-mode: vertical-rl;
@@ -12,8 +12,8 @@
 
 }
 #distinguish_display_box > p {
-    text-align: center;
-    font-size: 30px;
-    margin: -5px;
-    color: #fff;
+    text-align: center !important;
+    font-size: 28px !important;
+    margin: -5px !important;
+    color: #fff !important;
 }
