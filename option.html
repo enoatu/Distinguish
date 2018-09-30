@@ -7,16 +7,21 @@
 <body>
 <section>
     <p>URL</p>
-    <input id="url_txt" type="text" maxLength="20">
+    <input id="url_txt" type="text" maxLength="20" autocomplete="on" list="protocol">
+    <datalist id="protocol">
+        <option value="https://">
+        <option value="http://">
+    </datalist>
     <form id="kind_radio">
         <p>種類</p>
         <p>開発</p><p>ステージ</p><p>本番</p><p>その他</p>
-        <input type="radio" name="kind" value="開発" checked>
-        <input type="radio" name="kind" value="ステージ">
+        <input type="radio" name="kind" value="開発">
+        <input type="radio" name="kind" value="検証">
+        <input type="radio" name="kind" value="ステージング">
         <input type="radio" name="kind" value="本番">
         <input type="radio" name="kind" value="ほか">
     </form>
-    <button id="save">保存</button>
+    <button id="save_btn">保存</button>
     <table>
         <!--<thead>
             <tr>
@@ -27,6 +32,8 @@
         <tbody id="distinguish_list">
         </tbody>
     </table>
+    <button id="export_btn">Export</button>
+    <button id="import_btn">Import</button>
 </section>
 </body>
 <script src="js/option.js"></script>

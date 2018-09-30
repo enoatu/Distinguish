@@ -6,8 +6,8 @@ chrome.runtime.sendMessage({method: 'getItem', key: 'distinguish_data'}, functio
 function init (data) {
     if (!data) var data = [];
     var current_url = location.href;
-    for (var i = 0; i < data.length; i++) {
-        if(!current_url.indexOf(data[i].url)){
+    for (var i = 0, len = data.length; i < len; i++) {
+        if (!current_url.indexOf(data[i].url)) {
             displayBox(data[i]);
             break;
         }
@@ -15,7 +15,10 @@ function init (data) {
 }
 
 function displayBox(data) {
-    $('body').append('<div id="distinguish_display_box"><p>' + data.kind + '</p></div>');
+    var bg = (data.bgColor ==='undefined') ? null : "style = 'background-color:'" + data.bgColor;
+    $('body').append(
+        "<div id='distinguish_display_box'" + bg + "><p>" + data.kind + "</p></div>"
+    );
     $("#distinguish_display_box").draggable({
         containment: 'body',
         axis: 'y'
