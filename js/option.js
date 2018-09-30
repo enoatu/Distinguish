@@ -53,18 +53,21 @@ function listMonitor(obj) {
 
 function delete_list(obj, saveKey) {
     var tmpArr = JSON.parse(localStorage.getItem(saveKey));
-    // if (!tmpArr) tmpArr = [];
     var checkbox = document.list.elements['check[]'];
-    for (var i = 0, len = checkbox.length; i < len; i++) {
-        if (checkbox[i].checked) {
-            tmpArr.splice(i, 1);
+    if (typeof checkbox.length === 'undefined') {
+        tmpArr = [];
+    } else {
+        for (var i = 0, len = checkbox.length; i < len; i++) {
+            if (checkbox[i].checked) {
+                tmpArr.splice(i, 1);
+            }
         }
     }
     localStorage.setItem(saveKey, JSON.stringify(tmpArr));
-   // window.location.reload();
 }
 
 function check(obj, saveKey) {
+    if (!obj.urlTxt.value) return alert('URLが空です。');
     var checkedValue = null;
     for (var i = 0, len = obj.kindRadio.length; i < len; i++) {
         if (obj.kindRadio[i].checked) {
@@ -107,7 +110,13 @@ function saveDataToLocalStorage(data, saveKey) {
     if (!data) return;
     var tmpArr = JSON.parse(localStorage.getItem(saveKey));
     if (!tmpArr) tmpArr = [];
-    tmpArr.push(data);
+    if (typeof data.length === 'undefined') {
+        tmpArr.push(data);
+    } else {
+        for(var i = 0, len = data.length; i < len; i++) {
+            tmpArr.push(data[i]);
+        }
+    }
     localStorage.setItem(saveKey, JSON.stringify(tmpArr));
     return data;
 }
