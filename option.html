@@ -22,18 +22,28 @@
         <input type="radio" name="kind" value="ほか">
     </form>
     <button id="save_btn">保存</button>
-    <table>
+    <form name="list">
+        <table>
         <!--<thead>
             <tr>
                 <td>URL</td>
                 <td>種類</td>
             </tr>
         </thead>-->
-        <tbody id="distinguish_list">
-        </tbody>
-    </table>
-    <button id="export_btn">Export</button>
-    <button id="import_btn">Import</button>
+            <tbody id="distinguish_list">
+            </tbody>
+        </table>
+        <button id="delete_popup">削除</button>
+    </form>
+    <label>
+        Export:
+        <button id="export_btn">JSON書き出し</button>
+    </label>
+    <br>
+    <label>
+        Import:
+        <input name="myfile" type="file" id="import_btn" accept=".json">
+    </label>
 </section>
 </body>
 <script src="js/option.js"></script>

@@ -19,3 +19,7 @@ td {
 tr {
     border-bottom:  solid #fff; /* 線指定 */
 }
+
+#delete_popup {
+    visibility: hidden;
+}
