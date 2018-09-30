@@ -7,46 +7,62 @@
         saveBtn:    qs('#save_btn'),
         exportBtn:  qs('#export_btn'),
         importBtn:  qs('#import_btn'),
-        popup:      qs('#delete_popup'),
         deleteBtn:  qs('#delete_btn'),
     };
     var saveKey = 'distinguish_data';
     obj.saveBtn.addEventListener('click',   function(){ check(obj, saveKey) }, false);
     obj.exportBtn.addEventListener('click', function(){ exportFile(obj, saveKey) }, false);
     obj.importBtn.addEventListener('click', function(){ importFile(obj, saveKey) }, false);
+    obj.deleteBtn.addEventListener('click', function(){ delete_list(obj, saveKey) }, false);
+
     var data = JSON.parse(localStorage.getItem(saveKey));
     if (!data) data= [];
     for (var i = 0; i < data.length; i++) {
-        obj.list.innerHTML += '<tr><td><input type="checkBox" name="check[]" class="checkbox"></td><th>' + data[i].url + '</th><td>' + data[i].kind + '</td></tr>';
+        obj.list.innerHTML += '<tr><td><input type="checkBox" name="check[]" class="checkbox"></td><th>'
+            + data[i].url + '</th><td>' + data[i].kind + '</td></tr>';
     }
+    listMonitor(obj);
+})();
 
+function listMonitor(obj) {
     //popup
     var targets = document.getElementsByClassName('checkbox');
     for(var i = 0; i < targets.length; i++){
         targets[i].addEventListener('click', function () {
-             show();
+            show();
         }, false);
     }
     var flag = false;
-    var check = document.list.elements['check[]'];
-    var len = check.length;
+    var checkbox = document.list.elements['check[]'];
     function show() {
+        var len = checkbox.length;
         console.log("sdf");
         if (!len) {
-           flag = check.checked ? true : false;
+           flag = checkbox.checked ? true : false;
         }
         for (i = 0; i < len; i++) {
-           flag = check[i].checked ? true : false;
+           flag = checkbox[i].checked ? true : false;
            if(flag) break;
         }
         return toggle();
     }
-
     function toggle() {
-      return obj.popup.style.visibility = flag ? "visible" : "hidden";
+        return obj.deleteBtn.style.visibility = flag ? "visible" : "hidden";
     }
+}
 
-})();
+function delete_list(obj, saveKey) {
+    var tmpArr = JSON.parse(localStorage.getItem(saveKey));
+    // if (!tmpArr) tmpArr = [];
+    var checkbox = document.list.elements['check[]'];
+    for (var i = 0, len = checkbox.length; i < len; i++) {
+        if (checkbox[i].checked) {
+            tmpArr.splice(i, 1);
+        }
+    }
+    localStorage.setItem(saveKey, JSON.stringify(tmpArr));
+   // window.location.reload();
+}
 
 function check(obj, saveKey) {
     var checkedValue = null;
@@ -69,15 +85,22 @@ function check(obj, saveKey) {
 
 function save(obj, data, saveKey) {
     var data = saveDataToLocalStorage(data, saveKey);
-    if (data.length === 'undefined') {
+    if (typeof data.length === 'undefined') {
+        console.log("solo");
         obj.list.innerHTML +=
-            '<tr><th>' + data.url + '</th><td>' + data.kind + '</td></tr>';
+            '<tr><td><input type="checkBox" name="check[]" class="checkbox"></td><th>'
+            + data.url + '</th><td>' + data.kind + '</td></tr>';
+
     } else {
+        console.log("solo2");
+        console.log(data.length);
         for (var i = 0, len = data.length; i < len; i++) {
             obj.list.innerHTML +=
-                '<tr><th>' + data[i].url + '</th><td>' + data[i].kind + '</td></tr>';
+                '<tr><td><input type="checkBox" name="check[]" class="checkbox"></td><th>'
+                + data[i].url + '</th><td>' + data[i].kind + '</td></tr>';
         }
     }
+    listMonitor(obj);
 }
 
 function saveDataToLocalStorage(data, saveKey) {
@@ -142,10 +165,3 @@ function checkJson(json) {
     }
     return true;
 }
-
-(function() {
-    })()
-
-
-
-

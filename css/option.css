@@ -20,6 +20,6 @@ tr {
     border-bottom:  solid #fff; /* 線指定 */
 }
 
-#delete_popup {
+#delete_btn {
     visibility: hidden;
 }
