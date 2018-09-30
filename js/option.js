@@ -19,7 +19,7 @@
     if (!data) data= [];
     for (var i = 0; i < data.length; i++) {
         obj.list.innerHTML += '<tr><td><input type="checkBox" name="check[]" class="checkbox"></td><th>'
-            + data[i].url + '</th><td>' + data[i].kind + '</td></tr>';
+            + data[i].url + '</th><td style="background-color:' + pickColor(data[i].kind) + '" >' + data[i].kind + '</td></tr>';
     }
     listMonitor(obj);
 })();
@@ -107,13 +107,13 @@ function save(obj, data, saveKey) {
     if (typeof data.length === 'undefined') {
         obj.list.innerHTML +=
             '<tr><td><input type="checkBox" name="check[]" class="checkbox"></td><th>'
-            + data.url + '</th><td>' + data.kind + '</td></tr>';
+            + data.url + '</th><td style="background-color:' + pickColor(data.kind) + '" >' + data.kind + '</td></tr>';
 
     } else {
         for (var i = 0, len = data.length; i < len; i++) {
             obj.list.innerHTML +=
                 '<tr><td><input type="checkBox" name="check[]" class="checkbox"></td><th>'
-                + data[i].url + '</th><td>' + data[i].kind + '</td></tr>';
+                + data[i].url + '</th><td style="background-color:' + pickColor(data[i].kind) + '" >' + data[i].kind + '</td></tr>';
         }
     }
     listMonitor(obj);
